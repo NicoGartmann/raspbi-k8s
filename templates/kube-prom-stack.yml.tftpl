@@ -1,4 +1,9 @@
 grafana:
+  ingress:
+    enabled: true
+    hosts:
+      - grafana.elgartmanno.de
+    path: /
   additionalDataSources:
   - name: loki
     type: loki
