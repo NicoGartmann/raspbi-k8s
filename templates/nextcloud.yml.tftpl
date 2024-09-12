@@ -1,0 +1,17 @@
+ingress:
+  enabled: true
+  host:
+    - nextcloud.elgartmanno.de
+  path: /
+
+nextcloud:
+  host: nextcloud.elgartmanno.de
+
+persistence:
+  nextcloudData:
+    enabled: true
+    existingClaim: ${nextcloud_data_pvc}
+
+metrics:
+  enabled: true
+ 
