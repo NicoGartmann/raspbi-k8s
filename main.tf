@@ -3,7 +3,7 @@ terraform {
     organization = "ElGartmanno"
 
     workspaces {
-      name = "raspbi-k8s"
+      name = "raspi-k8s"
     }
   }
 }
