@@ -5,7 +5,7 @@ locals {
 resource "kubernetes_persistent_volume" "nextcloud_data" {
   metadata {
     name = "nextcloud-data"
-  } 
+  }
 
   spec {
     capacity = {
@@ -39,21 +39,21 @@ resource "kubernetes_persistent_volume_claim" "nextcloud_data" {
 }
 
 resource "helm_release" "nextcloud" {
-  name = "nextcloud"
-  repository = "https://nextcloud.github.io/helm"
-  chart = "nextcloud"
-  version = "5.5.4"
-  namespace = "nextcloud"
+  name             = "nextcloud"
+  repository       = "https://nextcloud.github.io/helm"
+  chart            = "nextcloud"
+  version          = "5.5.4"
+  namespace        = "nextcloud"
   create_namespace = true
 
   values = [
-    templatefile("${path.module}/templates/nextcloud.yml.tftpl",{
-      nextcloud_data_pvc = local.nextcloud_data_pvc 
+    templatefile("${path.module}/templates/nextcloud.yml.tftpl", {
+      nextcloud_data_pvc = local.nextcloud_data_pvc
     })
   ]
 
   depends_on = [
     kubernetes_persistent_volume.nextcloud_data
-  ] 
-} 
+  ]
+}
 
